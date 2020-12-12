@@ -6,7 +6,7 @@ part_time_hour=8
 monthly_wages=0
 total_hour=0
 i=0
-part_time(){
+work_hours(){
 	a=$1
 	case $a in
 		0)full_day_hour=16;;
@@ -19,7 +19,7 @@ do
 	case $var in
 	0)echo Employee is Present
 	var=$((RANDOM%2))
-	part_time $var
+	work_hours $var
 	daily_employee_wage=$((wage_per_hour*full_day_hour))
 	total_hour=$((total_hour+full_day_hour));;
 	1)echo Employee is Absent
