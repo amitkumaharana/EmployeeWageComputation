@@ -21,6 +21,7 @@ do
 	var=$((RANDOM%2))
 	work_hours $var
 	daily_employee_wage=$((wage_per_hour*full_day_hour))
+	echo $daily_employee_wage
 	total_hour=$((total_hour+full_day_hour));;
 	1)echo Employee is Absent
 	daily_employee_wage=0;;
@@ -29,3 +30,4 @@ do
 	i=$((i+1))
 done
 echo $monthly_wages
+echo $daily_employee_wage
