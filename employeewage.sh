@@ -4,6 +4,8 @@ wage_per_hour=20
 full_day_hour=8
 part_time_hour=8
 monthly_wages=0
+total_hour=0
+i=0
 part_time(){
 	a=$1
 	case $a in
@@ -11,17 +13,19 @@ part_time(){
 		1)full_day_hour=8;;
 	esac
 }
-for((i=1;i<=20;i++))
+while [ $i -le 20 -a $total_hour -le 100 ]
 do
-var=$((RANDOM%2))
+	var=$((RANDOM%2))
 	case $var in
 	0)echo Employee is Present
 	var=$((RANDOM%2))
 	part_time $var
-	daily_employee_wage=$((wage_per_hour*full_day_hour));;
+	daily_employee_wage=$((wage_per_hour*full_day_hour))
+	total_hour=$((total_hour+full_day_hour));;
 	1)echo Employee is Absent
 	daily_employee_wage=0;;
 	esac
 	monthly_wages=$((monthly_wages+daily_employee_wage))
+	i=$((i+1))
 done
 echo $monthly_wages
