@@ -3,7 +3,7 @@ echo "Welcome to Employee Wage Computation Program"
 wage_per_hour=20
 full_day_hour=8
 part_time_hour=8
-var=$((RANDOM%2))
+monthly_wages=0
 part_time(){
 	a=$1
 	case $a in
@@ -11,12 +11,17 @@ part_time(){
 		1)full_day_hour=8;;
 	esac
 }
-case $var in
+for((i=1;i<=20;i++))
+do
+var=$((RANDOM%2))
+	case $var in
 	0)echo Employee is Present
 	var=$((RANDOM%2))
 	part_time $var
 	daily_employee_wage=$((wage_per_hour*full_day_hour));;
 	1)echo Employee is Absent
 	daily_employee_wage=0;;
-esac
-echo $daily_employee_wage
+	esac
+	monthly_wages=$((monthly_wages+daily_employee_wage))
+done
+echo $monthly_wages
